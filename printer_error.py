@@ -1,3 +1,4 @@
+# https://www.codewars.com/kata/56541980fa08ab47a0000040/train/python
 # In a factory a printer prints labels for boxes. For one kind of boxes the printer has to use colors which, for the sake of simplicity, are named with letters from a to m.
 # The colors used by the printer are recorded in a control string. For example a "good" control string would be aaabbbbhaijjjm meaning that the printer used three times color a, four times color b, one time color h then one time color a...
 # Sometimes there are problems: lack of colors, technical malfunction and a "bad" control string is produced e.g. aaaxbbbbyyhwawiwjjjwwm.
@@ -10,19 +11,19 @@
 # s="aaaxbbbbyyhwawiwjjjwwm"
 # error_printer(s) => "8/22"
 
-import string
+import string                           #Imported the string module (which contains the alphabet a-z (string.ascii_lowercase))
 
 def printer_error(s):
-    alphabet = string.ascii_lowercase
-    valid_letters = alphabet[0:13]
-    good = 0
-    bad = 0
-    for letter in s:
+    alphabet = string.ascii_lowercase   #Assigned string.ascii_lowercase alphabet to the alphabet variable
+    valid_letters = alphabet[0:13]      #Index Slicing Done from a-m and assigned to the variable valid_letters
+    good = 0                            #Created a variable to count all the valid letters between a-m
+    bad = 0                             #Created a variable to count all the invalid letters not in a-m
+    for letter in s:                    #Looped through the given string and added +1 to letters not in valid_letters (a-m) and added +1 to letters that are valid.
         if letter not in valid_letters:
             bad += 1
         else:
             good += 1
-    return "{}/{}".format(str(bad),str(good+bad))
+    return "{}/{}".format(str(bad),str(good+bad))   #returned results
 
 print(printer_error('aaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbmmmmmmmmmmmmmmmmmmmxyz'))
 
